@@ -4,4 +4,6 @@ set -gx USE_CCACHE 1
 
 set -q CCACHE_ROOT; or set -l CCACHE_ROOT /usr/lib/ccache/bin
 
-set PATH $CCACHE_ROOT $PATH
+if not contains "$CCACHE_ROOT" $PATH
+  set PATH $CCACHE_ROOT $PATH
+end
